@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="upic-ski-resorts:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/upic_ski_resorts_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="upic-ski-resorts/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="web.war">
+        <element id="artifact" artifact-name="upic-ski-resorts:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>
