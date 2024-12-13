@@ -24,8 +24,7 @@ public class SkiersServlet extends HttpServlet {
 
   private Gson gson = new Gson();
   private EventDAO eventDAO;
-  //private Map<String, Integer> skierVerticalCache = Collections.synchronizedMap(new HashMap<>());
-  //private Map<String, Integer> skiDayVericalCache = Collections.synchronizedMap(new HashMap<>());
+
 
   @Override
   public void init() throws ServletException {
@@ -80,12 +79,6 @@ public class SkiersServlet extends HttpServlet {
           skierVertical = eventDAO.getSkierResortVerticalTotal(skierId, resorts, seasons);
           RedisCacheManager.set(queryInfo, skierVertical);
         }
-//        if(skierVerticalCache.containsKey(queryInfo)) {
-//          skierVertical = skierVerticalCache.get(queryInfo);
-//        } else {
-//          skierVertical = eventDAO.getSkierResortVerticalTotal(skierId, resorts, seasons);
-//          skierVerticalCache.put(queryInfo, skierVertical);
-//        }
 
 
 
@@ -125,12 +118,6 @@ public class SkiersServlet extends HttpServlet {
           result = eventDAO.getSkiDayVerticalForSkier(resortId, seasonId, dayId, skierId);
           RedisCacheManager.set(queryInfo, result);
         }
-//        if(skiDayVericalCache.containsKey(queryInfo)) {
-//          result = skiDayVericalCache.get(queryInfo);
-//        } else {
-//          result = eventDAO.getSkiDayVerticalForSkier(resortId, seasonId, dayId, skierId);
-//          skiDayVericalCache.put(queryInfo, result);
-//        }
 
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");

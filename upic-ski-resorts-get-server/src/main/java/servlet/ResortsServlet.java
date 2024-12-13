@@ -23,7 +23,6 @@ public class ResortsServlet extends HttpServlet {
 
   private Gson gson = new Gson();
 
-  //private Map<String, Integer> uniqueSkiersCache = Collections.synchronizedMap(new HashMap<>());
 
   @Override
   public void init() throws ServletException {
@@ -64,12 +63,7 @@ public class ResortsServlet extends HttpServlet {
           numSkiers = eventDAO.getNumOfUniqueSkiersAtTime(resortId, seasonId, dayId);
           RedisCacheManager.set(queryInfo, numSkiers);
         }
-//        if(uniqueSkiersCache.containsKey(queryInfo)){
-//          numSkiers = uniqueSkiersCache.get(queryInfo);
-//        } else {
-//          numSkiers = eventDAO.getNumOfUniqueSkiersAtTime(resortId, seasonId, dayId);
-//          uniqueSkiersCache.put(queryInfo, numSkiers);
-//        }
+
 
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
